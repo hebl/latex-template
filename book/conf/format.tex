@@ -5,21 +5,32 @@
 \definecolor{blueblack}{cmyk}{0,0,0,0.35}%浅黑
 \definecolor{darkblue}{cmyk}{1,0,0,0}%纯蓝
 \definecolor{lightblue}{cmyk}{0.15,0,0,0}%浅蓝
+\definecolor{mblue}{cmyk}{1,0.5,0,0.6}%浅蓝
 %--------------------------------------------------------设定标题颜色--------------
 \CTEXsetup[format+={\color{darkblue}}]{chapter}
 \CTEXsetup[format+={\color{darkblue}}]{section}
 \CTEXsetup[format+={\color{darkblue}}]{subsection}
 %------------------------------------------------定义页眉下单隔线----------------
-\newcommand{\makeheadrule}{\makebox[0pt][l]{\color{darkblue}\rule[.7\baselineskip]{\headwidth}{0.3pt}}\vskip-.8\baselineskip}
+\newcommand{\makeheadrule}{\makebox[0pt][l]{\color{mblue}\rule[.7\baselineskip]{\headwidth}{0.3pt}}\vskip-.8\baselineskip}
 %-----------------------------------------------定义页眉下双隔线----------------
 \makeatletter
 \renewcommand{\headrule}{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi\makeheadrule}}
 \pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{\hei\markboth{第\chaptername 章\quad #1}{}}    %去掉章标题中的数字
-\renewcommand{\sectionmark}[1]{\hei\markright{\thesection\quad #1}{}}    %去掉节标题中的点
+\renewcommand{\chaptermark}[1]{\markboth{\hei 第\chaptername 章\quad #1}{}}    %去掉章标题中的数字
+\renewcommand{\sectionmark}[1]{\markright{\kai \thesection\quad #1}{}}    %去掉节标题中的点
 \fancyhf{} %清空页眉
-\fancyhead[RO]{\kai{\footnotesize.~\color{darkblue}\thepage~.}}         % 奇数页码显示左边
-\fancyhead[LE]{\kai{\footnotesize.~\color{darkblue}\thepage~.}}         % 偶数页码显示右边
-\fancyhead[CO]{\song\footnotesize\color{darkblue}\rightmark} % 奇数页码中间显示节标题
-\fancyhead[CE]{\song\footnotesize\color{darkblue}\leftmark}  % 偶数页码中间显示章标题
+\fancyhead[RO]{\kai{\footnotesize\color{mblue}\thepage}}         % 奇数页码显示左边
+\fancyhead[LE]{\kai{\footnotesize\color{mblue}\thepage}}         % 偶数页码显示右边
+\fancyhead[CO]{\song\footnotesize\color{mblue}\rightmark} % 奇数页码中间显示节标题
+\fancyhead[CE]{\song\footnotesize\color{mblue}\leftmark}  % 偶数页码中间显示章标题
 %---------------------------------------------------------------------------------------------
+\titleformat{\part}{\centering\huge\hei}{第\partname 部分}{20pt}{\huge}
+\titleformat{\chapter}{\centering\LARGE\hei}{第\chaptername 章}{18pt}{\LARGE}
+\titleformat{\section}{\large\hei}{\thesection}{10pt}{\large}
+
+\titlecontents{part}[5pt]{\vspace{.5\baselineskip}\Large\hei} 
+     {\thecontentslabel}{}
+     {\hspace{.5em}\titlerule*[12pt]{$\cdot$}\contentspage} 
+\titlecontents{chapter}[0pt]{\vspace{.5\baselineskip}\large\hei} 
+     {\thecontentslabel}{}
+     {\hspace{.5em}\titlerule*[10pt]{$\cdot$}\contentspage} 
