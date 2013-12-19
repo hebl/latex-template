@@ -1,0 +1,29 @@
+\documentclass[12pt,a4paper,openany,twoside,cap,nofonts]{ctexbook}
+\input{conf/package.tex}   %引用宏包所在位置
+\input{conf/format.tex}   %引用宏包所在位置
+\begin{document}
+\pagenumbering{Roman}    %Roman字体书写页码
+
+%---------------------------------------------------封面等-----------------------
+\include{preface/cover}                         %封面
+\include{preface/intro}                          %简介
+\include{preface/preface}                          %前言
+
+%-------------------------------------目录部分------------------------------------------
+\setcounter{page}{1}   %重新开始页码
+\renewcommand\contentsname{目\qquad 录}
+%-------------------下面善三行去掉了目录首页页码---------------------
+\makeatletter
+\let\ps@plain\ps@empty
+\makeatother
+%-------------------------------------------------------------------------
+\tableofcontents                                    %目录
+\mainmatter    %前言和目录页码结束，正文重新开始设置页码
+%-----------------------------------------正文开始------------------------------
+\include{main/chap01}       %第一章
+
+%-----------------------------------------正文结束------------------------------
+
+\include{reference/references}                               %参考文献部分
+\clearpage
+\end{document}

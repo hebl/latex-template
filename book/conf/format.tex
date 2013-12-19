@@ -1,0 +1,25 @@
+%-----------------------------------------------------主文档 格式定义---------------------------------
+\addtolength{\headsep}{-0.1cm}        %页眉位置
+%\addtolength{\footskip}{0.4cm}       %页脚位置
+%-----------------------------------------------------------定义颜色---------------
+\definecolor{blueblack}{cmyk}{0,0,0,0.35}%浅黑
+\definecolor{darkblue}{cmyk}{1,0,0,0}%纯蓝
+\definecolor{lightblue}{cmyk}{0.15,0,0,0}%浅蓝
+%--------------------------------------------------------设定标题颜色--------------
+\CTEXsetup[format+={\color{darkblue}}]{chapter}
+\CTEXsetup[format+={\color{darkblue}}]{section}
+\CTEXsetup[format+={\color{darkblue}}]{subsection}
+%------------------------------------------------定义页眉下单隔线----------------
+\newcommand{\makeheadrule}{\makebox[0pt][l]{\color{darkblue}\rule[.7\baselineskip]{\headwidth}{0.3pt}}\vskip-.8\baselineskip}
+%-----------------------------------------------定义页眉下双隔线----------------
+\makeatletter
+\renewcommand{\headrule}{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi\makeheadrule}}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\hei\markboth{第\chaptername 章\quad #1}{}}    %去掉章标题中的数字
+\renewcommand{\sectionmark}[1]{\hei\markright{\thesection\quad #1}{}}    %去掉节标题中的点
+\fancyhf{} %清空页眉
+\fancyhead[RO]{\kai{\footnotesize.~\color{darkblue}\thepage~.}}         % 奇数页码显示左边
+\fancyhead[LE]{\kai{\footnotesize.~\color{darkblue}\thepage~.}}         % 偶数页码显示右边
+\fancyhead[CO]{\song\footnotesize\color{darkblue}\rightmark} % 奇数页码中间显示节标题
+\fancyhead[CE]{\song\footnotesize\color{darkblue}\leftmark}  % 偶数页码中间显示章标题
+%---------------------------------------------------------------------------------------------
